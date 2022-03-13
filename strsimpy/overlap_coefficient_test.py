@@ -32,6 +32,17 @@ class TestOverlapCoefficient(unittest.TestCase):
         self.assertEqual(1 / 2, sim.similarity(s1, s2))
         self.assertEqual(1 / 2, sim.distance(s1, s2))
 
+    def test_overlap_coefficient_empty_return0(self):
+        sim = OverlapCoefficient(2)
+        s1, s2 = "", ""
+        self.assertEqual(0.0, sim.similarity(s1, s2))
+        self.assertEqual(1.0, sim.distance(s1, s2))
+
+    def test_overlap_coefficient_almost_empty_return0(self):
+        sim = OverlapCoefficient(2)
+        s1, s2 = " ", " "
+        self.assertEqual(0.0, sim.similarity(s1, s2))
+        self.assertEqual(1.0, sim.distance(s1, s2))
 
 if __name__ == "__main__":
     unittest.main()
